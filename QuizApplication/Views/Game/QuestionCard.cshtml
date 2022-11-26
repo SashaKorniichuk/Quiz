@@ -1,0 +1,48 @@
+﻿@model QuizApplication.BLL.ViewModels.QuestionAnswerViewModel
+
+<style type="text/css">
+fieldset{
+    font-family:sans-serif;
+    border:3px solid #1F4970;
+    background:#ddd;
+    border-radius:5px;
+    padding:15px;
+}    
+
+fieldset legend{
+    background:#1F4970;
+    color:#fff;
+    padding:5px 10px 10px 20px;
+    font-size:15px;
+    border-radius:5px;
+    box-shadow: 0 0 0 5px #ddd;
+    margin-left:1px;
+    margin-right:10px;
+}
+</style>
+
+
+<fieldset>
+    <legend>@Model.QuestionName</legend>
+    @using(Html.BeginForm("Next","Game",FormMethod.Post))
+    {
+        <table>
+            @foreach(var m in @Model.ListOfOption)
+            {
+                <tr>
+                    <td>
+                        @Html.RadioButton("Answer",m.IsCorrect,false)
+                    </td>
+                    <td>
+                       @Html.Label(m.OptionName,m.OptionName,null)
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <input type="Submit" value="Next" class="btn btn-success" />
+    }
+
+</fieldset>
+
+

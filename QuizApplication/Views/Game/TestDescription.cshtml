@@ -1,0 +1,26 @@
+﻿@model Int32;
+<h2>
+    This is Test description
+</h2>
+<input id="agree" type="checkbox" name="check" /> I agree to start
+<br>
+
+<a id="Back" asp-controller="Home" asp-action="Index" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Back</a>&nbsp;
+<a id="Proceed" asp-controller="Game" asp-action="Proceed" asp-route-id="@Model" class=" btn btn-sm btn-success"><i class="bi bi-pencil-square"></i>Proceed</a>&nbsp;
+
+<script>
+
+    let checkbox = document.querySelector('#agree');
+    let button = document.querySelector('#Proceed');
+    button.style["pointer-events"] = "none";
+    checkbox.addEventListener("change", () => {
+        if (button.style["pointer-events"] == "none" && checkbox.checked) {
+
+            button.style["pointer-events"] = "visible";
+        }
+        else{
+            button.style["pointer-events"] = "none";
+        }
+
+    });
+</script>
